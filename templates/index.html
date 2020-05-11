@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Recepti</title>
+{% endblock %}
+
+{% block body %}
+    <form action = '/index', method = "POST">
+        Sostojki: <input type="text" name="sostojki" id="sostojki">
+        <br>
+        <input type="submit" value="Post">
+    </form>
+
+    <hr>
+    <h1>{{ notfound }}</h1>
+    {% for p in sostojki %}
+        <p>{{ p['title'] }}</p>
+        <a href={{ p['href'] }}>Link</a>
+        <p>{{ p['ingredients'] }}</p>
+        <img src="{{ p['thumbnail'] }}" height="300" width="300">
+        <hr>
+        <hr>
+    {% endfor %}
+
+{% endblock %}
