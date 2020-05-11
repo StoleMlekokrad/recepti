@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import requests
+from app import app
 
 app = Flask(__name__)
 
@@ -23,4 +24,4 @@ def index():
     return render_template('index.html', sostojki = response['results'])
 
 if __name__ == "__name__":
-    app.run(debug = False)
+    app.run()
