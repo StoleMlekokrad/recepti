@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 import requests
-from app import app
 
 app = Flask(__name__)
 
@@ -10,7 +9,6 @@ def red():
 
 @app.route('/index', methods = ['GET', 'POST'])
 def index():
-    response = ""
     if request.method == 'POST':
         ingr = request.form['sostojki']
         if not ingr:
@@ -21,7 +19,8 @@ def index():
             response = response.json()
         except Exception:
             return render_template('index.html', notfound = "Couldn't find any recepie")
-    return render_template('index.html', sostojki = response['results'])
+        return render_template('index.html', sostojki = response['results'])
+    return render_template('index.html', sostojki = "")
 
 if __name__ == "__name__":
     app.run()
